@@ -3,7 +3,7 @@
     "target": "ES2020",
     "module": "commonjs",
     "esModuleInterop": true,
-    "outDir": "dist",
+    "outDir": "api",
     "strict": true,
     "sourceMap": true,
     "moduleResolution": "node",
