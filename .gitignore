@@ -93,7 +93,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-# removed dist for vercel build
+dist
 
 # Gatsby files
 .cache/
