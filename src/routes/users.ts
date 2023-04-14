@@ -1,11 +1,12 @@
 import express from "express";
-const router = express.Router();
-router.get("/", (req, res) => {
-  // Handle GET request for '/users' route
-  return res.send("users 🏓");
-});
+import { getDummyData } from "../controllers/userController";
 
-router.post("/", (req, res) => {
-  // Handle POST request for '/users' route
-});
+const router = express.Router();
+// router.get("/", (req, res) => {
+//   // Handle GET request for '/users' route
+//   return res.send("users 🏓");
+// });
+
+router.get("/", getDummyData);
+
 export default router;
