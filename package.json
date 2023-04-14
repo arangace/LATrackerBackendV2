@@ -20,10 +20,6 @@
   "bugs": {
     "url": "https://github.com/arangace/LATrackerBackendV2/issues"
   },
-  "pre-commit": [
-    "build",
-    "add-build"
-  ],
   "homepage": "https://github.com/arangace/LATrackerBackendV2#readme",
   "dependencies": {
     "express": "^4.18.2"
