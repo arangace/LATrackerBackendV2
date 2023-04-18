@@ -1,7 +1,19 @@
-const app = require("express")();
-const { v4 } = require("uuid");
+import express, { Request, Response } from "express";
+import usersRouter from "./routes/users";
 
-app.get("/api", (req, res) => {
-  return res.send("users 🏓");
+const app = express();
+const port = process.env.PORT || 8080;
+
+app.use("/users", usersRouter);
+
+app.get("/", (_req, res) => {
+  return res.send("Express Typescript on Vercel");
 });
-module.exports = app;
+
+app.get("/ping", (_req, res) => {
+  return res.send("pong 🏓");
+});
+
+app.listen(port, () => {
+  return console.log(`Server is listening on ${port}`);
+});
