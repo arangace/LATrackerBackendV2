@@ -11,7 +11,7 @@ const port = process.env.PORT || 8080;
 app.use("/users", users_1.default);
 app.use("/api", index_1.default);
 app.get("/", (_req, res) => {
-    return res.send("Express Typescript on Vercel");
+    return res.send("Express and Typescript on Vercel");
 });
 app.get("/ping", (_req, res) => {
     return res.send("pong 🏓");
