@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 router.get("/", (req, res) => {
     // Handle GET request for '/users' route
-    return res.send("userssss 🏓");
+    return res.end(JSON.stringify({ user: 1 }));
 });
 // router.get("/", getDummyData);
 exports.default = router;

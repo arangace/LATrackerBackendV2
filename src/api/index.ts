@@ -4,7 +4,7 @@ import { getDummyData } from "../controllers/userController";
 const router = express.Router();
 router.get("/", (req, res) => {
   // Handle GET request for '/users' route
-  return res.send("userssss 🏓");
+  return res.end(JSON.stringify({ user: 1 }));
 });
 
 // router.get("/", getDummyData);
