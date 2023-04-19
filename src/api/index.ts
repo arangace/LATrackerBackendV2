@@ -1,12 +1,8 @@
 import express from "express";
-import { getDummyData } from "../controllers/userController";
+import { getAccountData } from "../controllers/accountController";
 
 const router = express.Router();
-router.get("/", (req, res) => {
-  // Handle GET request for '/users' route
-  return res.end(JSON.stringify({ user: 1 }));
-});
 
-// router.get("/", getDummyData);
+router.use("/", getAccountData);
 
 export default router;
