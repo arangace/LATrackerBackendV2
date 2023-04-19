@@ -31,48 +31,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.connectToDatabase = exports.collections = void 0;
-const express_1 = __importDefault(require("express"));
-const users_1 = __importDefault(require("./routes/users"));
-const index_1 = __importDefault(require("./api/index"));
+exports.getAccountData = void 0;
 const mongoDB = __importStar(require("mongodb"));
 const dotenv = __importStar(require("dotenv"));
-const app = (0, express_1.default)();
-const port = process.env.PORT || 8080;
-app.use("/users", users_1.default);
-app.use("/api", index_1.default);
-exports.collections = {};
-function connectToDatabase() {
-    return __awaiter(this, void 0, void 0, function* () {
+const getAccountData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
         dotenv.config();
-        try {
-            const client = new mongoDB.MongoClient(process.env.DATABASE_URL);
-            yield client.connect();
-            const db = client.db(process.env.DB_NAME);
-            const collection = db.collection(process.env.COLLECTION_NAME);
-            exports.collections.users = collection;
-            console.log(`Successfully connected to database: ${db.databaseName} and collection: ${collection.collectionName}`);
-        }
-        catch (err) {
-            console.log(err);
-            return;
-        }
-    });
-}
-exports.connectToDatabase = connectToDatabase;
-connectToDatabase();
-app.get("/", (_req, res) => {
-    return res.send("Express and Typescript on Vercel");
+        const client = new mongoDB.MongoClient(process.env.DATABASE_URL);
+        yield client.connect();
+        const db = client.db(process.env.DB_NAME);
+        const collection = db.collection(process.env.COLLECTION_NAME);
+        const data = yield collection.find().toArray();
+        console.log(data);
+        client.close();
+        res.status(200).json(data);
+    }
+    catch (error) {
+        res.status(500).send(error);
+    }
 });
-app.get("/ping", (_req, res) => {
-    return res.send("pong 🏓");
-});
-app.listen(port, () => {
-    return console.log(`Server is listening on ${port}`);
-});
-exports.default = app;
-//# sourceMappingURL=index.js.map
+exports.getAccountData = getAccountData;
+//# sourceMappingURL=accountController.js.map
