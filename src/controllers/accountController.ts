@@ -16,6 +16,8 @@ export const getAccountData = async (
 
     await client.connect();
     const name = req.params.name;
+    const { testingName } = req.params;
+
     const db: mongoDB.Db = client.db(process.env.DB_NAME);
 
     const collection: mongoDB.Collection = db.collection(
@@ -25,7 +27,7 @@ export const getAccountData = async (
 
     console.log(data);
     client.close();
-    res.status(200).json(data);
+    res.status(200).json(testingName);
   } catch (error) {
     res.status(500).send(error);
   }
