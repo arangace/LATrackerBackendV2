@@ -7,7 +7,7 @@ import * as dotenv from "dotenv";
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use("/users", usersRouter);
+app.use("/users/:name", usersRouter);
 app.use("/api", api);
 
 export const collections: { users?: mongoDB.Collection } = {};
