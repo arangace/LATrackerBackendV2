@@ -7,6 +7,6 @@ const router = express.Router();
 //   return res.send("users 🏓");
 // });
 
-router.get("/", getDummyData);
+router.get("/:name", getDummyData);
 
 export default router;
