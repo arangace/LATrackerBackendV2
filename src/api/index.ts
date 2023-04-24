@@ -5,6 +5,6 @@ import { getAllAccounts } from "../controllers/getAllAccounts";
 const router = express.Router();
 
 router.use("/getAccount/:name", getAccountData);
-router.use("/", getAllAccounts);
+// router.use("/", getAllAccounts);
 
 export default router;
