@@ -13,8 +13,8 @@ export const getDummyData = async (
       { _id: "3", name: "Charlie", email: "charlie@example.com" },
     ];
     const result = users.filter((user) => user.name === req.params.name);
-
-    res.status(200).json(result);
+    res.status(200).json("hello");
+    // res.status(200).json(result);
   } catch (error) {
     res.status(500).send(error);
   }
