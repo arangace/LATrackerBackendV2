@@ -15,14 +15,14 @@ export const getAccountData = async (
     );
 
     await client.connect();
-
+    const name = req.params.name;
     const db: mongoDB.Db = client.db(process.env.DB_NAME);
 
     const collection: mongoDB.Collection = db.collection(
       process.env.COLLECTION_NAME
     );
+    const data = await collection.findOne({ name: name });
 
-    const data = await collection.find().toArray();
     console.log(data);
     client.close();
     res.status(200).json(data);
