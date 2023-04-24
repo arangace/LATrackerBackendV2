@@ -18,16 +18,16 @@ export const getAccountData = async (
     const name = req.params.name;
     const { testingName } = req.params;
 
-    const db: mongoDB.Db = client.db(process.env.DB_NAME);
+    // const db: mongoDB.Db = client.db(process.env.DB_NAME);
 
-    const collection: mongoDB.Collection = db.collection(
-      process.env.COLLECTION_NAME
-    );
-    const data = await collection.findOne({ name: name });
+    // const collection: mongoDB.Collection = db.collection(
+    //   process.env.COLLECTION_NAME
+    // );
+    // const data = await collection.findOne({ name: name });
 
-    console.log(data);
-    client.close();
-    res.status(200).json(testingName);
+    // console.log(data);
+    // client.close();
+    res.status(200).json(testingName + name);
   } catch (error) {
     res.status(500).send(error);
   }
